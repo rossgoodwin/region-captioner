@@ -58,7 +58,7 @@ function mousePressed() {
 }
 
 function mouseReleased() {
-	if (mouseX <= canvasSize && mouseY <= canvasSize) {
+	if (mouseX <= canvasSize && mouseY <= canvasSize && mouseSwitch) {
 		addingCaption = true;
 		mouseDestX = mouseX;
 		mouseDestY = mouseY;
