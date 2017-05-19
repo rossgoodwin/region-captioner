@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Image Captioning Interface</title>
+
+    <link rel="stylesheet" type="text/css" href="./css/skeleton.css" />
+
+<style>
+
+body {
+	background-color: #EEE;
+}
+
+canvas {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#site-container {
+	position: absolute;
+	top: 0;
+	left: 710px;
+}
+
+input, button, p {
+	display: block;
+	margin-top: 25px;
+	background-color: #FFF;
+}
+
+#img-count {
+	background-color: #EEE;
+	color: #D91E18;
+	padding: 5px;
+}
+
+input {
+	width: 500px;
+}
+
+#cap-container {
+	margin-top: 25px;
+	color: #333;
+}
+
+#cap-container p {
+	margin-top: 5px;
+	padding: 5px;
+}
+
+</style>
+
+  </head>
+  <body>
+
+<div id="site-container">
+
+	<p id="img-count"></p>
+	<input id="text-input" type="text">
+
+	<button id="add-button">add caption</button>
+	<button id="next-button">next image</button>
+	<button id="download-button">download json</button>
+
+	<div id="cap-container"></div>
+
+
+
+</div>
+
+
+<script src="./js/jquery-3.2.1.min.js"></script>
+<script src="./js/p5.min.js"></script>
+<script src="./js/sketch.js"></script>
+
+
+
+  </body>
+</html>
