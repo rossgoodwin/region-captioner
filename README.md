@@ -16,7 +16,7 @@ On Mac:
 
     $ python make_img_json.py
 
-(5) Start a simple Python web server on port 8000 (or another port of your choice).
+(5) Inside the repo folder, start a simple Python web server on port 8000 (or another port of your choice).
 
     $ python -m SimpleHTTPServer 8000
 
