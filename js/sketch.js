@@ -27,7 +27,7 @@ function setup() {
 	createCanvas(canvasSize,canvasSize);
 	background(238,238,238);
 	// console.log(imgPathList);
-	newImg();
+	newImg(true);
 	fill('rgba(255,255,255,0.3)');
 	stroke(217,30,24);
 	rectMode(CORNERS);
@@ -67,22 +67,37 @@ function mouseReleased() {
 }
 
 
-function newImg() {
-	imgPathIndex++;
-	var imgFp = imgPathList[imgPathIndex];
-	curImg = loadImage(imgFp);
-	$('#img-count').text(
-		imgFp + ': ' + 'Image ' + (imgPathIndex+1) + ' of ' + Object.keys(imgPathList).length
-	);
+function newImg(isNext) {
+	var imgPathIndexOrig = imgPathIndex;
+	if (isNext) {
+		imgPathIndex++;
+	}
+	else {
+		imgPathIndex--;
+	}
+
+	if ( imgPathIndex < 0 || imgPathIndex > (Object.keys(imgPathList).length-1) ) {
+		alert('No more images in this direction!');
+		imgPathIndex = imgPathIndexOrig;
+	}
+	else {
+		var imgFp = imgPathList[imgPathIndex];
+		curImg = loadImage(imgFp);
+		$('#img-count').text(
+			imgFp + ': ' + 'Image ' + (imgPathIndex+1) + ' of ' + Object.keys(imgPathList).length
+		);
+	}
 }
 
 $(function(){
 
-	$("#next-button").click(newImg);
+	$("#next-button").click(function(){ newImg(true); });
+
+	$('#prev-button').click(function(){ newImg(false); });
 
 	$('#add-button').click(function(){
 		var cap = $('#text-input').val();
-		var coords = [mouseOriginX, mouseOriginY, mouseDestX, mouseDestY];
+		var coords = [mouseOriginX, mouseOriginY, mouseDestX, mouseDestY].map(function(x){ return parseInt(x); });
 		var coordStr = coords.join(',');
 		var imgFp = imgPathList[imgPathIndex];
 		// console.log(cap);
